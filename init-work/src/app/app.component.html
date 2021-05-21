@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+  <span>{{ title }} app is running!</span>
+  <h3>{{message}}</h3>
+  <div class="testclass">
+    <!-- <app-test></app-test> -->
+    <!-- <app-srtuctdirtest></app-srtuctdirtest> -->
+    <!-- <app-intractbwcomp (childdata)="message=$event" [dataparent]="datafromapp"></app-intractbwcomp> -->
+    <!-- <app-pipeoperation></app-pipeoperation> -->
+   <!-- <app-studyservices></app-studyservices> -->
+  </div>
+
+  <div>
+    <h1>Angular Router App</h1>
+<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
+<nav>
+  <ul>
+    <li><a routerLink="/pipe-operation" routerLinkActive="active">pipe Component</a></li>
+    <li><a routerLink="/struct-operation" routerLinkActive="active">struct Component</a></li>
+    <li><a routerLink="/intract-operation" routerLinkActive="active">intract Component</a></li>
+    <li><a routerLink="/study-services" routerLinkActive="active">services Component</a></li>
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
+  </div>
+  
+</div>
+</body>
+</html>
+    
+
+    

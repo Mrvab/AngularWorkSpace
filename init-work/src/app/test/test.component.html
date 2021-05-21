@@ -1,0 +1,27 @@
+<p>test works!</p>
+<div>
+    trying {{name}} <br>
+    <br>
+    <h2>interpolation</h2>
+    {{ name.length}} <br>
+    {{ name.toUpperCase()}} <br>
+    {{greetTest()}} <br>
+    {{siteUrl}} <br>
+    <h2 [class] = 'successClass'> {{name}} </h2>
+    <h2 [class.text-danger] = 'isError'> {{name}} </h2>
+    <br>
+    <h2 [ngClass] = "selectClass"> multi-class binding </h2>
+
+    <br>
+    <input [id]="testid" type="text" value="testwork"><br>
+    <input [id]="testid" bind-disabled ='isDisable' type="text" value="testwork"><br>
+    <button (click)=whenClick()>
+        greet
+    </button>
+    <h2>{{greetings}} </h2><br>
+    <h1>2 way binding</h1>
+    <br>
+    <input [(ngModel)]="bind_in" type="text" value="testwork">
+    {{bind_in}}
+
+</div>

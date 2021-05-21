@@ -1,0 +1,33 @@
+<p>srtuctdirtest works!</p>
+
+<h1 *ngIf = "dspcon; then thenBlock; else elseBlock"> show on true</h1>
+
+<ng-template #thenBlock>
+    <h2> thenblock </h2>
+</ng-template>
+
+<ng-template #elseBlock>
+    <h2> elseblock </h2>
+</ng-template>
+<div *ngIf = "show"> {{ ngdata }}</div>
+<button (click)="ngconswitch()"> click</button>
+
+<h2>ngswitch </h2>
+<div [ngSwitch] = "color">
+<div *ngSwitchCase = "'green'">
+    <h3 [style.color] = "color">green selectd</h3>
+</div>
+<div *ngSwitchCase = "'blue'">
+    <h3 [style.color] = "color">blue selected</h3>
+</div>
+<div #ngSwitchDefault> 
+    select a color
+</div>
+<button #selectedcolor1 (click) = "selectColor(selectedcolor1.value)" value="green">green</button>
+<button #selectedcolor2 (click) = "selectColor(selectedcolor2.value)" value="blue">blue</button>
+</div>
+<h2>ng for</h2>
+<div *ngFor = "let color of colors">
+    <h3>{{color}}</h3>
+</div>
+
