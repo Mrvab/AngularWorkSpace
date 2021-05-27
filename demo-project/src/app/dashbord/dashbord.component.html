@@ -1,0 +1,21 @@
+
+<div>
+  <table mat-table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Active</th>
+      <th>Select</th>
+    </tr>
+    <tr *ngFor="let item of data">
+      <td> <input #id type="text" readonly value= {{item.id}} > </td>
+      <td> <input #fname type="text" readonly value= {{item.first_name}} ></td>
+      <td> <input #email type="text" readonly value= {{item.email}} > </td>
+      <td> <input #isactive type="text" readonly value=  {{item.is_active}} ></td>
+      <td> <button  (click)="editUser($event.target,id,fname,email,isactive)" mat-raised-button [color]='(item.is_active==1)?"warn":"primary"' > {{(item.is_active==0)?"Enable":"Disable"}} </button>
+      </td>
+      <!-- TODO update the value -->
+    </tr>
+  </table>
+</div>

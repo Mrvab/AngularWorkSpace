@@ -1,0 +1,15 @@
+
+    <div class="form-cls">
+        <p>Registration</p>
+        <form action="/login" method="">  <br>
+            <input #firstname type="text" placeholder="First Name"> <br>
+            <input #lastname type="text"  placeholder="Last Name "> <br>
+            <input #dob type="date" placeholder="D.O.B"> <br>
+            <input #emailId type="email" placeholder=" Email"> <br>
+            <input #pwd1 type="password" placeholder="Password"> <br>
+            <input #pwd2 type="password" placeholder="Confirm Password"> <br>  
+            <button mat-raised-button color="primary" type="submit" (click) = "register(emailId.value,pwd1.value,pwd2.value,firstname.value,lastname.value,dob.value)"> Register </button>
+        </form>
+        
+    </div>
+   
