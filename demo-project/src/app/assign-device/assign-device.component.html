@@ -1,0 +1,27 @@
+<div>
+<h4> Select User</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Username</mat-label>
+  <mat-select [(value)]="selectedUser">
+    <mat-option *ngFor="let user of users" [value]="user.id" >
+      {{user.first_name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<h4>Select Device</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Device Model</mat-label>
+  <mat-select [(value)]="selectedDevice">
+    <mat-option *ngFor="let device of devices" [value]="device.id">
+      {{device.model}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+    <div mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close (click)="assignDevice()" color="accent">Assign Device</button>
+        
+      </div>
+</div>

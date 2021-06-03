@@ -14,16 +14,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { DashbordComponent } from './dashbord/dashbord.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { UsercollectionComponent } from './usercollection/usercollection.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-
-
+import { AdminUserTableComponent } from './admin-user-table/admin-user-table.component';
+import { FormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import { DeviceComponent } from './device/device.component';
+import {  MatDialogModule } from '@angular/material/dialog';
+import { AssignDeviceComponent } from './assign-device/assign-device.component';
+import { MatSelectModule } from '@angular/material/select';
+import { UserworkspaceComponent } from './userworkspace/userworkspace.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -32,9 +37,12 @@ import { MatSortModule } from '@angular/material/sort';
     RegistrationComponent,
     LoginComponent,
     NavComponent,
-    DashbordComponent,
-    UsercollectionComponent
+    AdminUserTableComponent,
+    DeviceComponent,
+    AssignDeviceComponent,
+    UserworkspaceComponent
   ],
+  entryComponents:[DeviceComponent,AssignDeviceComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,9 +59,13 @@ import { MatSortModule } from '@angular/material/sort';
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    FormsModule,
+    MatInputModule,
+    MatDialogModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

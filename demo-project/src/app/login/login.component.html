@@ -4,25 +4,40 @@
     <p>Login</p>
 
     <form  action="#" method="">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input #emailId matInput placeholder="name@domain.com" required>
+          </mat-form-field>
+        
 
-        <input #emailId type="email" placeholder="Email">
-        <input #pwd1 type="password" placeholder="Password">
+          <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input #pwd1 matInput [type]="hide ? 'password' : 'text'" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+       
 
-        <button (click)="userValid(emailId.value,pwd1.value)" type="submit"> Login </button>
+        <button mat-raised-button color="primary" (click)="userValid(emailId.value,pwd1.value)" type="submit"> Login </button>
 
         
     </form>
-    <div *ngIf="loginState">
-        <p>Login Success!</p>
-        
-    </div>
+    
 
     <div *ngIf="isLoggedIn">
         <p>Wrong Credentials!!</p>
     </div>      
 </div>
 <div>
-    <div *ngIf="isAdmin">
-        <app-dashbord></app-dashbord>
+    <div *ngIf="loginState">
+        <app-userworkspace></app-userworkspace>
     </div>
 </div>
+
+<div>
+    <div *ngIf="isAdmin">
+        <app-admin-user-table></app-admin-user-table>
+    </div>
+</div>
+

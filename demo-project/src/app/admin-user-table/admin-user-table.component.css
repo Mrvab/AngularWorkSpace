@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+  }
+  .assign-btn-grp{
+    
+    margin-top: 2em;
+    margin-left: 1em;
+  }
+  .assign-btn-grp > button{
+    margin: 0em 1em;
+  }

@@ -1,0 +1,19 @@
+<h2 mat-dialog-title > Add Device </h2>
+<div mat-dialog-content>
+    <mat-form-field class="example-full-width">
+        <mat-label>Brand</mat-label>
+        <input required #brand matInput placeholder="MI,Apple etc">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Model</mat-label>
+        <input required #model matInput placeholder="Mi4i,i9 etc">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Type</mat-label>
+        <input required #type matInput placeholder="mobile,laptop,desktop">
+      </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="addDevice(brand,model,type)" color="primary">Add More</button>
+    <button mat-raised-button mat-dialog-close color="accent" (click)="addDevice(brand,model,type)"> Ok </button>
+  </div>

@@ -1,15 +1,45 @@
+<div class="form-cls">
+  <p>Registration</p>
+  <form action="/login" method=""> <br>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>First Name</mat-label>
+      <input required #firstname matInput placeholder="First">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Last Name</mat-label>
+      <input #lastname matInput placeholder="Last">
+    </mat-form-field>
 
-    <div class="form-cls">
-        <p>Registration</p>
-        <form action="/login" method="">  <br>
-            <input #firstname type="text" placeholder="First Name"> <br>
-            <input #lastname type="text"  placeholder="Last Name "> <br>
-            <input #dob type="date" placeholder="D.O.B"> <br>
-            <input #emailId type="email" placeholder=" Email"> <br>
-            <input #pwd1 type="password" placeholder="Password"> <br>
-            <input #pwd2 type="password" placeholder="Confirm Password"> <br>  
-            <button mat-raised-button color="primary" type="submit" (click) = "register(emailId.value,pwd1.value,pwd2.value,firstname.value,lastname.value,dob.value)"> Register </button>
-        </form>
-        
-    </div>
-   
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>D.O.B</mat-label>
+      <input required #dob matInput placeholder="dd-mm-yyyy" type="date">
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input required #emailId matInput placeholder="name@domail.com">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input #pwd1 matInput [type]="hide ? 'password' : 'text'" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Confirm Password</mat-label>
+      <input #pwd2 matInput [type]="hide ? 'password' : 'text'" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    
+    <button mat-raised-button color="primary" type="submit"
+      (click)="register(emailId.value,pwd1.value,pwd2.value,firstname.value,lastname.value,dob.value)"> Register
+    </button>
+  </form>
+
+</div>

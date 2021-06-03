@@ -10,7 +10,7 @@ import { ConfigService } from '../config.service';
 export class RegistrationComponent implements OnInit {
   public isValidEmail:boolean = false
   public pwdMatch:boolean = false
- 
+  public hide = true
 
   constructor(private confServices : ConfigService) { }
 
