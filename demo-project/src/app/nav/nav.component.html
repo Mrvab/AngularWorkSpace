@@ -1,34 +1,78 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
     <mat-toolbar>Menu </mat-toolbar>
     <mat-nav-list>
-      <p mat-list-item>Nothing here</p>
-      <button mat-raised-button color="accent" routerLink="/dashboad" routerLinkActive="active"> Dashboad</button>
-
+      <button
+        mat-raised-button
+        color="accent"
+        routerLink="/dashboad"
+        routerLinkActive="active"
+      >
+        Dashboad
+      </button>
+      <button
+        mat-raised-button
+        color="accent"
+        routerLink="/userprofile"
+        routerLinkActive="active"
+      >
+        Profile
+      </button>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>demo-project</span>
       <div class="btn-nav">
-        <button mat-raised-button color="accent" *ngIf="showSignup" routerLink="/register" routerLinkActive="active"
-            (click)="toggleSigninVisibility()"> SignUp </button>
-        <button mat-raised-button color="accent" *ngIf="showLogin" routerLink="/login" routerLinkActive="active"
-            (click)="toggleLoginVisibility()"> Login </button>
-        <button mat-raised-button color="accent" *ngIf="showLogout" routerLink="/login" routerLinkActive="active"
-            (click)="toggleLogoutVisibility()"> Logout </button>
+        <button
+          mat-raised-button
+          color="accent"
+          *ngIf="showSignup"
+          routerLink="/register"
+          routerLinkActive="active"
+          (click)="toggleSigninVisibility()"
+        >
+          SignUp
+        </button>
+        <button
+          mat-raised-button
+          color="accent"
+          *ngIf="showLogin"
+          routerLink="/login"
+          routerLinkActive="active"
+          (click)="toggleLoginVisibility()"
+        >
+          Login
+        </button>
+        <button
+          mat-raised-button
+          color="accent"
+          *ngIf="showLogout"
+          routerLink="/"
+          routerLinkActive="active"
+          (click)="toggleLogoutVisibility()"
+        >
+          Logout
+        </button>
       </div>
-
-
-
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
-
   </mat-sidenav-content>
 </mat-sidenav-container>

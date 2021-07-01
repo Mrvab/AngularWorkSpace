@@ -22,14 +22,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { AdminUserTableComponent } from './admin-user-table/admin-user-table.component';
 import { FormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { DeviceComponent } from './device/device.component';
-import {  MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AssignDeviceComponent } from './assign-device/assign-device.component';
 import { MatSelectModule } from '@angular/material/select';
 import { UserworkspaceComponent } from './userworkspace/userworkspace.component';
 import { CookieService } from 'ngx-cookie-service';
-
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +40,10 @@ import { CookieService } from 'ngx-cookie-service';
     AdminUserTableComponent,
     DeviceComponent,
     AssignDeviceComponent,
-    UserworkspaceComponent
+    UserworkspaceComponent,
+    UserProfileComponent,
   ],
-  entryComponents:[DeviceComponent,AssignDeviceComponent],
+  entryComponents: [DeviceComponent, AssignDeviceComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -63,9 +64,9 @@ import { CookieService } from 'ngx-cookie-service';
     FormsModule,
     MatInputModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,5 +1,19 @@
+<div>
+  <h2>User</h2>
+  <!-- bug here unknown reason see console -->
 
-<div *ngFor="let dev of data" >
-    <p> {{dev.first_name}} {{dev.email}} {{dev.brand}} {{dev.model}} </p>
+  <mat-card>Name : {{ uName }}</mat-card>
+  <mat-card>Email : {{ uEmail }}</mat-card>
 
+  <h2>Device Assigned</h2>
+  <div *ngIf="showhide; else notassign">
+    <div *ngFor="let dev of data">
+      <mat-card>Brand :{{ dev.brand }} Model : {{ dev.model }}</mat-card>
+    </div>
+  </div>
+  <ng-template #notassign>
+    <mat-card>
+      <h3>Device not assigned.</h3>
+    </mat-card>
+  </ng-template>
 </div>

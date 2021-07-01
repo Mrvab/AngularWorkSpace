@@ -1,43 +1,48 @@
+<div class="form-cls" *ngIf="!loginState">
+  <p>Login</p>
 
+  <form action="#" method="">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input #emailId matInput placeholder="name@domain.com" required />
+    </mat-form-field>
 
-<div class = "form-cls" *ngIf="!isAdmin">
-    <p>Login</p>
+    <mat-form-field appearance="fill" class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input #pwd1 matInput [type]="hide ? 'password' : 'text'" required />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
 
-    <form  action="#" method="">
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Email</mat-label>
-            <input #emailId matInput placeholder="name@domain.com" required>
-          </mat-form-field>
-        
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="userValid(emailId.value, pwd1.value)"
+      type="submit"
+    >
+      Login
+    </button>
+  </form>
 
-          <mat-form-field appearance="fill" class="example-full-width">
-            <mat-label>Password</mat-label>
-            <input #pwd1 matInput [type]="hide ? 'password' : 'text'" required>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field>
-       
-
-        <button mat-raised-button color="primary" (click)="userValid(emailId.value,pwd1.value)" type="submit"> Login </button>
-
-        
-    </form>
-    
-
-    <div *ngIf="isLoggedIn">
-        <p>Wrong Credentials!!</p>
-    </div>      
+  <div *ngIf="isLoggedIn">
+    <li style="color: red">Wrong Credentials!!</li>
+  </div>
 </div>
 <div>
-    <div *ngIf="loginState">
-        <app-userworkspace></app-userworkspace>
-    </div>
+  <div *ngIf="loginState && !isAdmin">
+    <app-userworkspace></app-userworkspace>
+  </div>
 </div>
 
 <div>
-    <div *ngIf="isAdmin">
-        <app-admin-user-table></app-admin-user-table>
-    </div>
+  <div *ngIf="isAdmin">
+    <app-admin-user-table></app-admin-user-table>
+  </div>
 </div>
-

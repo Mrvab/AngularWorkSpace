@@ -1,40 +1,82 @@
-<div>
-  <table class="mat-elevation-z8" mat-table [dataSource]="data" class="full-width-table" matSort aria-label="Elements">
-
+<div *ngIf="isAdmin; else notallowed">
+  <table
+    class="mat-elevation-z8"
+    mat-table
+    [dataSource]="data"
+    class="full-width-table"
+    matSort
+    aria-label="Elements"
+  >
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td #id mat-cell *matCellDef="let row">{{row.id}}</td>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        (click)="sortRecord('id')"
+      >
+        Id
+      </th>
+      <td #id mat-cell *matCellDef="let row">{{ row.id }}</td>
     </ng-container>
 
-
     <ng-container matColumnDef="first_name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Firstname</th>
-      <td mat-cell *matCellDef="let row">{{row.first_name}}</td>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        (click)="sortRecord('first_name')"
+      >
+        Firstname
+      </th>
+      <td mat-cell *matCellDef="let row">{{ row.first_name }}</td>
     </ng-container>
 
     <ng-container matColumnDef="last_name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Lastname</th>
-      <td mat-cell *matCellDef="let row">{{row.last_name}}</td>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        (click)="sortRecord('last_name')"
+      >
+        Lastname
+      </th>
+      <td mat-cell *matCellDef="let row">{{ row.last_name }}</td>
     </ng-container>
 
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>email</th>
-      <td mat-cell *matCellDef="let row">{{row.email}}</td>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        (click)="sortRecord('email')"
+      >
+        email
+      </th>
+      <td mat-cell *matCellDef="let row">{{ row.email }}</td>
     </ng-container>
 
     <ng-container matColumnDef="pwd">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>pwd</th>
-      <td mat-cell *matCellDef="let row">{{row.pwd}}</td>
+      <td mat-cell *matCellDef="let row">{{ row.pwd }}</td>
     </ng-container>
 
     <ng-container matColumnDef="dob">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>dob</th>
-      <td mat-cell *matCellDef="let row">{{row.dob}}</td>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        (click)="sortRecord('dob')"
+      >
+        dob
+      </th>
+      <td mat-cell *matCellDef="let row">{{ row.dob }}</td>
     </ng-container>
 
     <ng-container matColumnDef="is_active">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>is active</th>
-      <td mat-cell *matCellDef="let row">{{row.is_active==1?"yes":"no"}}</td>
+      <td mat-cell *matCellDef="let row">
+        {{ row.is_active == 1 ? "yes" : "no" }}
+      </td>
     </ng-container>
 
     <!-- <ng-container matColumnDef="is_admin">
@@ -43,31 +85,61 @@
     </ng-container> -->
 
     <ng-container matColumnDef="device_id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Device</th>
-      <td mat-cell *matCellDef="let row">{{row.device}}</td>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        (click)="sortRecord('device')"
+      >
+        Device
+      </th>
+      <td mat-cell *matCellDef="let row">{{ row.device }}</td>
     </ng-container>
 
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
       <td mat-cell *matCellDef="let row">
-        <button (click)="editUser(row.id,row.first_name,row.email,row.is_active)" mat-raised-button
-          [color]='(row.is_active==1)?"warn":"primary"'>
-          {{(row.is_active==0)?"Enable":"Disable"}} </button>
-          <button (click)="remDevice(row.id)" mat-raised-button 
-          color="warn">Rem Device
-           </button>
+        <button
+          (click)="editUser(row.id, row.first_name, row.email, row.is_active)"
+          mat-raised-button
+          [color]="row.is_active == 1 ? 'warn' : 'primary'"
+        >
+          {{ row.is_active == 0 ? "Enable" : "Disable" }}
+        </button>
+        <button
+          (click)="remDevice(row.id)"
+          mat-raised-button
+          [disabled]="row.device == undefined ? true : false"
+          color="warn"
+        >
+          Rem Device
+        </button>
       </td>
     </ng-container>
 
-
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-<div class="assign-btn-grp">
-  <button mat-raised-button color="primary" (click)= "addDevice()">  Add Devices</button>
-  <button mat-raised-button color="primary" (click)= "assignDevice()" (isAssignEmit)="updateTable($event)">  Assign Devices</button>
+  <div class="assign-btn-grp">
+    <button mat-raised-button color="primary" (click)="addDevice()">
+      Add Devices
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="assignDevice()"
+      (isAssignEmit)="updateTable($event)"
+    >
+      Assign Devices
+    </button>
+  </div>
 </div>
-
-</div>
+<ng-template class="warni" #notallowed>
+  <h1>Access Denied</h1>
+  <h1>Insuffecient Privilage</h1>
+  <h1>Access Denied</h1>
+  <h1>Ristricted Area</h1>
+  <h1>Access Denied</h1>
+  <h1>Return Now</h1>
+</ng-template>

@@ -5,26 +5,37 @@ import { ConfigService } from '../config.service';
 @Component({
   selector: 'app-userworkspace',
   templateUrl: './userworkspace.component.html',
-  styleUrls: ['./userworkspace.component.css']
+  styleUrls: ['./userworkspace.component.css'],
 })
 export class UserworkspaceComponent implements OnInit {
-  public userId :any 
-  public data:any
+  public userId: any;
+  public data: any;
+  public msg: string = 'Not Assigned';
+  private userData: any;
+  public uName: string = '';
+  public uEmail: string = '';
+  public showhide: boolean = false;
 
-
-  constructor(private confService:ConfigService,private cookieServ:CookieService) { }
+  constructor(
+    private confService: ConfigService,
+    private cookieServ: CookieService
+  ) {
+    this.userData = JSON.parse(cookieServ.get('userdata'));
+    this.uName = this.userData.first_name;
+    this.uEmail = this.userData.email;
+  }
 
   ngOnInit(): void {
-    this.userId = this.cookieServ.get('userid')
-    this.confService.getUserDevice(this.userId).subscribe(data => {
-    this.setData(data)
-    })
-  }
-  setData(dData:any){
-    this.data = dData
+    this.cookieServ.set('islogged', 'true');
 
+    this.confService.getUserDevice(this.userData.id).subscribe((data) => {
+      this.setData(data);
+    });
   }
-  
- 
-
+  setData(dData: any) {
+    this.data = dData;
+    if (this.data != '') {
+      this.showhide = true;
+    }
+  }
 }

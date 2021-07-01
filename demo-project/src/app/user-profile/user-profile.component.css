@@ -1,0 +1,38 @@
+.form-cls {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30em;
+  padding: 2em 3em;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(61, 2, 223);
+  border-radius: 1em;
+  box-shadow: 2px 8px 10px #3151b5;
+  transition: 0.5s;
+}
+.form-cls:hover {
+  transition: 0.5s;
+  box-shadow: 15px 20px 25px #3151b5;
+  text-shadow: 2px 12px 15px #3151b5;
+}
+
+.form-cls > form > input {
+  border: 2px solid #3151b5;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  width: 100%;
+  transition: 0.5s;
+}
+.form-cls > form > input:hover {
+  transition: 0.5s;
+  box-shadow: 2px 8px 10px #3151b5;
+}
+.form-cls > p {
+  font-size: 2em;
+  color: #3151b5;
+  text-align: center;
+}
+.example-full-width {
+  width: 100%;
+}
